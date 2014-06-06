@@ -204,8 +204,6 @@ __gcc_personality_v0(int version, _Unwind_Action actions,
         return _URC_CONTINUE_UNWIND;
 
     uintptr_t pc = _Unwind_GetIP(context)-1;
-    uintptr_t funcStart = _Unwind_GetRegionStart(context);
-    uintptr_t pcOffset = pc - funcStart;
 
     /* Parse LSDA header. */
     uint8_t lpStartEncoding = *lsda++;
