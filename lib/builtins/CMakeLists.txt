@@ -242,10 +242,13 @@ set(arm_SOURCES
   arm/unordsf2vfp.S
   ${GENERIC_SOURCES})
 
+set(aarch64_SOURCES
+  ${GENERIC_SOURCES})
+
 add_custom_target(builtins)
 
 if (NOT WIN32)
-  foreach(arch x86_64 i386 arm)
+  foreach(arch x86_64 i386 arm aarch64)
     if(CAN_TARGET_${arch})
       add_compiler_rt_runtime(clang_rt.${arch} ${arch} STATIC
         SOURCES ${${arch}_SOURCES}

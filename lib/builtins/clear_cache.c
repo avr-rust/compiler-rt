@@ -25,6 +25,10 @@
   #include <asm/unistd.h>
 #endif
 
+#if defined(__aarch64__) && !defined(__APPLE__)
+  #include <stddef.h>
+#endif
+
 /*
  * The compiler generates calls to __clear_cache() when creating 
  * trampoline functions on the stack for use with nested functions.
