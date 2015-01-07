@@ -247,12 +247,12 @@ $(call Set,Tmp.CFLAGS,$(strip \
        -mkernel -DKERNEL_USE,)\
   $(call GetCNAVar,CFLAGS,$(Tmp.Key),$(Tmp.Config),$(Tmp.Arch))))
 
-$(Tmp.ObjPath)/%.o: $(Tmp.SrcPath)/%.s $(Tmp.Dependencies) $(Tmp.ObjPath)/.dir
-	$(Summary) "  ASSEMBLE:  $(Tmp.Name)/$(Tmp.Config)/$(Tmp.Arch): $$<"
-	$(Verb) $(Tmp.CC) $(COMMON_ASMFLAGS) $(Tmp.CFLAGS)  -c -o $$@ $$<
 $(Tmp.ObjPath)/%.o: $(Tmp.SrcPath)/%.S $(Tmp.Dependencies) $(Tmp.ObjPath)/.dir
 	$(Summary) "  ASSEMBLE:  $(Tmp.Name)/$(Tmp.Config)/$(Tmp.Arch): $$<"
 	$(Verb) $(Tmp.CC) $(COMMON_ASMFLAGS) $(Tmp.CFLAGS) -c -o $$@ $$<
+$(Tmp.ObjPath)/%.o: $(Tmp.SrcPath)/%.s $(Tmp.Dependencies) $(Tmp.ObjPath)/.dir
+	$(Summary) "  ASSEMBLE:  $(Tmp.Name)/$(Tmp.Config)/$(Tmp.Arch): $$<"
+	$(Verb) $(Tmp.CC) $(COMMON_ASMFLAGS) $(Tmp.CFLAGS)  -c -o $$@ $$<
 $(Tmp.ObjPath)/%.o: $(Tmp.SrcPath)/%.c $(Tmp.Dependencies) $(Tmp.ObjPath)/.dir
 	$(Summary) "  COMPILE:   $(Tmp.Name)/$(Tmp.Config)/$(Tmp.Arch): $$<"
 	$(Verb) $(Tmp.CC) $(COMMON_CFLAGS) $(Tmp.CFLAGS) -c -o $$@ $$<
