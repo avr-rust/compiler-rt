@@ -104,6 +104,14 @@
 
 /* . */
 
+/* AVR defines 'AVR' and '__AVR' */
+#if defined(__AVR)
+#define _YUGA_LITTLE_ENDIAN 1
+#define _YUGA_BIG_ENDIAN    0
+#endif /* AVR */
+
+/* . */
+
 #if !defined(_YUGA_LITTLE_ENDIAN) || !defined(_YUGA_BIG_ENDIAN)
 #error Unable to determine endian
 #endif /* Check we found an endianness correctly. */

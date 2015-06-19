@@ -1,4 +1,4 @@
-#===- lib/builtins/Makefile.mk -----------------------------*- Makefile -*--===#
+#===- lib/builtins/ppc/Makefile.mk -------------------------*- Makefile -*--===#
 #
 #                     The LLVM Compiler Infrastructure
 #
@@ -9,14 +9,12 @@
 
 ModuleName := builtins
 SubDirs :=
+OnlyArchs := avr
 
-# Add arch specific optimized implementations.
-SubDirs += i386 ppc x86_64 arm aarch64 avr
-
-# Define the variables for this specific directory.
+AsmSources := $(foreach file,$(wildcard $(Dir)/*.S),$(notdir $(file)))
 Sources := $(foreach file,$(wildcard $(Dir)/*.c),$(notdir $(file)))
-ObjNames := $(Sources:%.c=%.o)
-Implementation := Generic
+ObjNames := $(Sources:%.c=%.o) $(AsmSources:%.S=%.o)
+Implementation := Optimized
 
 # FIXME: use automatic dependencies?
-Dependencies := $(wildcard $(Dir)/*.h)
+Dependencies := $(wildcard lib/*.h $(Dir)/*.h)

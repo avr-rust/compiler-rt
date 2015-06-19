@@ -245,10 +245,13 @@ set(arm_SOURCES
 set(aarch64_SOURCES
   ${GENERIC_SOURCES})
 
+set(avr_SOURCES
+  ${GENERIC_SOURCES})
+
 add_custom_target(builtins)
 
 if (NOT WIN32)
-  foreach(arch x86_64 i386 arm aarch64)
+  foreach(arch x86_64 i386 arm aarch64 avr)
     if(CAN_TARGET_${arch})
       add_compiler_rt_runtime(clang_rt.${arch} ${arch} STATIC
         SOURCES ${${arch}_SOURCES}
