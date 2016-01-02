@@ -1,4 +1,4 @@
-#===- lib/builtins/ppc/Makefile.mk -------------------------*- Makefile -*--===#
+#===- lib/builtins/avr/Makefile.mk -------------------------*- Makefile -*--===#
 #
 #                     The LLVM Compiler Infrastructure
 #
